@@ -5,17 +5,29 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="spinner.css">
     <title>IEDC: RELEvent</title>
 </head>
 
 <body>
 
     <body>
+        <div class="loader" id="loader">
+            <div class="preloader">
+                <div class="preloader__square"></div>
+                <div class="preloader__square"></div>
+                <div class="preloader__square"></div>
+                <div class="preloader__square"></div>
+            </div>
+            <div class="status">Loading<span class="status__dot">.</span><span class="status__dot">.</span><span class="status__dot">.</span></div>
+        </div>
         <canvas id="bg"></canvas>
         <main>
 
             <header>
-                <img class="logo" src="assets/logo.png" />
+                <div class="image-container">
+                    <img class="header-logo" src="assets/logo.png" />
+                </div>
             </header>
 
 
@@ -102,15 +114,13 @@
                     almost 2 to 3 hours of online sessions in the evenings, several notions were covered making it a well-rounded event.
 
                 </p>
-
             </section>
 
-            <blockquote>
-                <a href="https://riyapmathew2000.typeform.com/RELEvent-2021">
+            <div class="footer">
+                <a class="submit-button" href="https://iedcmbcet.com/joinrelevent.html">
                     <p>Join Us</p>
                 </a>
-            </blockquote>
-
+            </div>
 
         </main>
         <script type="module" src="/main.js"></script>

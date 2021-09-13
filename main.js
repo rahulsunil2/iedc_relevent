@@ -1,4 +1,5 @@
 import "./style.css";
+import "./spinner.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
@@ -49,8 +50,18 @@ scene.add(pointLight, ambientLight);
 // const controls = new OrbitControls(camera, renderer.domElement);
 
 function addStar() {
-	const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-	const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+	// const geometry = new THREE.SphereGeometry(0.25, 24, 24);
+	// const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
+	// const star = new THREE.Mesh(geometry, material);
+
+	const starTexture = new THREE.TextureLoader().load("./assets/star.png");
+
+	const geometry = new THREE.PlaneGeometry(1, 1);
+	const material = new THREE.MeshBasicMaterial({
+		map: starTexture,
+		side: THREE.DoubleSide,
+		alphaTest: 0.5,
+	});
 	const star = new THREE.Mesh(geometry, material);
 
 	const [x, y, z] = Array(3)
@@ -61,7 +72,7 @@ function addStar() {
 	scene.add(star);
 }
 
-Array(200).fill().forEach(addStar);
+Array(500).fill().forEach(addStar);
 
 // Background
 
@@ -136,4 +147,14 @@ function animate() {
 	renderer.render(scene, camera);
 }
 
-animate();
+function init() {
+	THREE.DefaultLoadingManager.onLoad = () => {
+		setTimeout(() => {
+			document.getElementById("loader").classList.add("hidden");
+		}, 3000);
+	};
+
+	animate();
+}
+
+init();
