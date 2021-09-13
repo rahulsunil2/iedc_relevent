@@ -149,9 +149,8 @@ function animate() {
 
 function init() {
 	THREE.DefaultLoadingManager.onLoad = () => {
-		setTimeout(() => {
-			document.getElementById("loader").classList.add("hidden");
-		}, 3000);
+		document.getElementById("loader").classList.add("hidden");
+		// setTimeout(() => {}, 3000);
 	};
 
 	animate();
