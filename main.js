@@ -31,7 +31,7 @@ const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
 const material = new THREE.MeshStandardMaterial({ color: 0xff6347 });
 const torus = new THREE.Mesh(geometry, material);
 
-scene.add(torus);
+// scene.add(torus);
 
 // Lights
 
@@ -80,41 +80,22 @@ const logo = new THREE.Mesh(
 
 scene.add(logo);
 
-// Moon
-
-const moonTexture = new THREE.TextureLoader().load("./assets/moon.jpg");
-const normalTexture = new THREE.TextureLoader().load("./assets/normal.jpg");
-
-const moon = new THREE.Mesh(
-	new THREE.SphereGeometry(3, 32, 32),
-	new THREE.MeshStandardMaterial({
-		map: moonTexture,
-		normalMap: normalTexture,
-	})
-);
-
-// scene.add(moon);
-
-// moon.position.z = 30;
-// moon.position.setX(-10);
-
 //event
-function events() {
-	const events_texture = new THREE.TextureLoader().load(
-		"./assets/all-events.png"
-	);
-	const geometry = new THREE.PlaneGeometry(35, 20);
+function events(event_img_src, index) {
+	const events_texture = new THREE.TextureLoader().load(event_img_src);
+	const geometry = new THREE.PlaneGeometry(20, 10);
 	const material = new THREE.MeshBasicMaterial({
 		map: events_texture,
 		side: THREE.DoubleSide,
 	});
 	const event_canvas = new THREE.Mesh(geometry, material);
-	event_canvas.position.set(-15, 0, 30);
+	event_canvas.position.set(-10, 0, 20 + 10 * index);
 	event_canvas.rotation.y += 1.25;
 	scene.add(event_canvas);
 }
 
-events();
+events("./assets/all-events.png", 1);
+events("./assets/img-01.jpg", 2);
 
 logo.position.z = -5;
 logo.position.x = 2;
@@ -123,11 +104,11 @@ logo.position.x = 2;
 
 function moveCamera() {
 	const t = document.body.getBoundingClientRect().top;
-	moon.rotation.x += 0.05;
-	moon.rotation.y += 0.075;
-	moon.rotation.z += 0.05;
-
 	logo.rotation.y += 0.1;
+
+	logo.scale.x = 1 + t * -0.0015;
+	logo.scale.y = 1 + t * -0.0015;
+	logo.scale.z = 1 + t * -0.0015;
 
 	camera.position.z = t * -0.01;
 	camera.position.x = t * -0.0015;
@@ -140,12 +121,11 @@ moveCamera();
 
 function animate() {
 	requestAnimationFrame(animate);
+	logo.rotation.y += 0.01;
 
 	torus.rotation.x += 0.01;
 	torus.rotation.y += 0.005;
 	torus.rotation.z += 0.01;
-
-	moon.rotation.x += 0.005;
 
 	renderer.render(scene, camera);
 }
