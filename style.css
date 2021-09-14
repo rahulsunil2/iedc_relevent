@@ -46,6 +46,9 @@ header {
     font-size: 2.5rem;
     padding: 2rem;
     width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .header-logo {
@@ -56,7 +59,6 @@ section {
     padding: 1rem;
     width: 50%;
     background: var(--dark-bg);
-    font-size: 1.25rem;
     line-height: 1.5;
     margin-bottom: var(--spacing);
 }
@@ -79,11 +81,10 @@ blockquote p {
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .submit-button {
-    padding: 10px;
-    margin-left: 25%;
     border-radius: 10px;
     background-color: white;
     text-decoration: none;
@@ -92,17 +93,19 @@ blockquote p {
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 10px;
 }
 
 .image-container .submit-button {
-    width: 30%;
+    width: 50%;
     height: 40px;
 }
 
 .submit-button p {
     color: black;
-    font-size: 75%;
+    font-size: 1.25rem;
     font-weight: 700;
+    text-align: center;
 }
 
 .footer .submit-button p {
@@ -111,16 +114,25 @@ blockquote p {
     font-weight: 700;
 }
 
+.footer .submit-button {
+    padding: 10px;
+}
+
 .left {
     align-self: flex-end;
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 600px) {
     section {
         padding: 10px;
         width: 100%;
     }
     .image-container {
         width: 100%;
+    }
+    blockquote p {
+        color: white;
+        font-size: 200%;
+        display: inline;
     }
 }

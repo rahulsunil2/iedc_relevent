@@ -83,19 +83,24 @@ scene.add(logo);
 //event
 function events(event_img_src, index) {
 	const events_texture = new THREE.TextureLoader().load(event_img_src);
-	const geometry = new THREE.PlaneGeometry(20, 10);
+	const geometry = new THREE.PlaneGeometry(16, 9);
 	const material = new THREE.MeshBasicMaterial({
 		map: events_texture,
 		side: THREE.DoubleSide,
 	});
 	const event_canvas = new THREE.Mesh(geometry, material);
-	event_canvas.position.set(-10, 0, 20 + 10 * index);
+	event_canvas.position.set(-15, 0, 15 * index);
 	event_canvas.rotation.y += 1.25;
 	scene.add(event_canvas);
+	return event_canvas;
 }
 
-events("./assets/all-events.png", 1);
-events("./assets/img-01.jpg", 2);
+var eventList = [
+	events("./assets/all-events.png", 1),
+	events("./assets/img-01.jpg", 2),
+	events("./assets/img-07.jpg", 3),
+	events("./assets/img-11.jpg", 4),
+];
 
 logo.position.z = -5;
 logo.position.x = 2;
@@ -113,6 +118,11 @@ function moveCamera() {
 	camera.position.z = t * -0.01;
 	camera.position.x = t * -0.0015;
 	camera.rotation.y = t * -0.0002;
+
+	eventList.forEach((event) => {
+		event.position.x = -10 + t * 0.0001;
+		event.rotation.y = 0 + t * 0.0005;
+	});
 }
 document.body.onscroll = moveCamera;
 moveCamera();
@@ -126,6 +136,10 @@ function animate() {
 	torus.rotation.x += 0.01;
 	torus.rotation.y += 0.005;
 	torus.rotation.z += 0.01;
+
+	eventList.forEach((event) => {
+		event.rotation.y += 0.0005;
+	});
 
 	renderer.render(scene, camera);
 }
