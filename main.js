@@ -69,9 +69,7 @@ scene.background = spaceTexture;
 
 // Avatar
 
-const logoTexture = new THREE.TextureLoader().load(
-	"./assets/CatalystWhiteFGBlackBG.png"
-);
+const logoTexture = new THREE.TextureLoader().load("./assets/CatalystLogo.png");
 
 const logo = new THREE.Mesh(
 	new THREE.BoxGeometry(2, 2, 2),
@@ -121,7 +119,7 @@ function moveCamera() {
 
 	eventList.forEach((event) => {
 		event.position.x = -10 + t * 0.0001;
-		event.rotation.y = 0 + t * 0.0005;
+		event.rotation.y = 600 + t * 0.0005;
 	});
 }
 document.body.onscroll = moveCamera;

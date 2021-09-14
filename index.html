@@ -6,6 +6,17 @@
     <link rel="icon" type="image/svg+xml" href="./assets/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>IEDC: RELEvent</title>
+    <style>
+        .noise {
+            z-index: 100;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: .2;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,6 +31,7 @@
             </div>
             <div class="status">Loading<span class="status__dot">.</span><span class="status__dot">.</span><span class="status__dot">.</span></div>
         </div>
+        <canvas id="noise" class="noise"></canvas>
         <canvas id="bg"></canvas>
         <main>
 
@@ -126,6 +138,7 @@
 
         </main>
         <script type="module" src="/main.js"></script>
+        <script type="module" src="/noise.js"></script>
     </body>
 </body>
 
