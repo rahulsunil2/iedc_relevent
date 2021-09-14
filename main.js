@@ -41,19 +41,7 @@ pointLight.position.set(5, 5, 5);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
-// Helpers
-
-// const lightHelper = new THREE.PointLightHelper(pointLight)
-// const gridHelper = new THREE.GridHelper(200, 50);
-// scene.add(lightHelper, gridHelper)
-
-// const controls = new OrbitControls(camera, renderer.domElement);
-
 function addStar() {
-	// const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-	// const material = new THREE.MeshStandardMaterial({ color: 0xffffff });
-	// const star = new THREE.Mesh(geometry, material);
-
 	const starTexture = new THREE.TextureLoader().load("./assets/star.png");
 
 	const geometry = new THREE.PlaneGeometry(1, 1);
@@ -105,10 +93,28 @@ const moon = new THREE.Mesh(
 	})
 );
 
-scene.add(moon);
+// scene.add(moon);
 
-moon.position.z = 30;
-moon.position.setX(-10);
+// moon.position.z = 30;
+// moon.position.setX(-10);
+
+//event
+function events() {
+	const events_texture = new THREE.TextureLoader().load(
+		"./assets/all-events.png"
+	);
+	const geometry = new THREE.PlaneGeometry(35, 20);
+	const material = new THREE.MeshBasicMaterial({
+		map: events_texture,
+		side: THREE.DoubleSide,
+	});
+	const event_canvas = new THREE.Mesh(geometry, material);
+	event_canvas.position.set(-15, 0, 30);
+	event_canvas.rotation.y += 1.25;
+	scene.add(event_canvas);
+}
+
+events();
 
 logo.position.z = -5;
 logo.position.x = 2;
@@ -124,10 +130,9 @@ function moveCamera() {
 	logo.rotation.y += 0.1;
 
 	camera.position.z = t * -0.01;
-	camera.position.x = t * -0.0002;
+	camera.position.x = t * -0.0015;
 	camera.rotation.y = t * -0.0002;
 }
-
 document.body.onscroll = moveCamera;
 moveCamera();
 
@@ -141,8 +146,6 @@ function animate() {
 	torus.rotation.z += 0.01;
 
 	moon.rotation.x += 0.005;
-
-	// controls.update();
 
 	renderer.render(scene, camera);
 }
