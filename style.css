@@ -85,7 +85,15 @@ blockquote p {
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+}
+
+.footer section {
+    margin-bottom: 0;
+}
+
+.footer section ul li {
+    list-style-type: none;
 }
 
 .submit-button {
@@ -149,5 +157,8 @@ blockquote p {
     }
     .left {
         align-self: center;
+    }
+    .footer {
+        flex-direction: column;
     }
 }
