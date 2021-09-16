@@ -158,4 +158,7 @@ blockquote p {
     .left {
         align-self: center;
     }
+    .footer {
+        flex-direction: column;
+    }
 }
