@@ -81,13 +81,13 @@ scene.add(logo);
 //event
 function events(event_img_src, index) {
 	const events_texture = new THREE.TextureLoader().load(event_img_src);
-	const geometry = new THREE.PlaneGeometry(16, 9);
+	const geometry = new THREE.PlaneGeometry(12, 9);
 	const material = new THREE.MeshBasicMaterial({
 		map: events_texture,
 		side: THREE.DoubleSide,
 	});
 	const event_canvas = new THREE.Mesh(geometry, material);
-	event_canvas.position.set(-15, 0, 15 * index);
+	event_canvas.position.set(-15, 0, 10 * index);
 	event_canvas.rotation.y += 1.25;
 	scene.add(event_canvas);
 	return event_canvas;
@@ -97,7 +97,6 @@ var eventList = [
 	events("./assets/all-events.png", 1),
 	events("./assets/img-01.jpg", 2),
 	events("./assets/img-07.jpg", 3),
-	events("./assets/img-11.jpg", 4),
 ];
 
 logo.position.z = -5;
