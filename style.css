@@ -8,6 +8,10 @@
     font-style: normal;
 }
 
+body {
+    background-color: #050505;
+}
+
 main {
     width: 90vw;
     color: white;
